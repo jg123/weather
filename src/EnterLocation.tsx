@@ -25,7 +25,7 @@ const EnterLocation = ({
   };
 
   return (
-    <Window style={{ "min-width": "400px" }}>
+    <Window style={{ "minWidth": "400px" }}>
       <WindowHeader className="window-header">
         <span>Weather</span>
       </WindowHeader>
