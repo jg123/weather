@@ -17,6 +17,8 @@ import ms_sans_serif_bold from "react95/dist/fonts/ms_sans_serif_bold.woff2";
 
 import ForecastContainer from "./ForecastContainer";
 
+import "./App.css";
+
 const GlobalStyles = createGlobalStyle`
   @font-face {
     font-family: 'ms_sans_serif';
@@ -37,15 +39,10 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const App = () => (
-  <div
-    style={{
-      background: "teal",
-      height: "100vh"
-    }}
-  >
+  <div>
     <div
       style={{
-        padding: "5rem"
+        padding: "4rem 0 1rem 4rem"
       }}
     >
       <GlobalStyles />
