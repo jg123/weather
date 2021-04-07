@@ -1,8 +1,19 @@
 import { useState } from "react";
-// @ts-ignore
-import { WindowContent, Fieldset, TextField, Button } from "react95";
+import {
+  Window,
+  WindowContent,
+  WindowHeader,
+  Fieldset,
+  TextField,
+  Button
+  // @ts-ignore
+} from "react95";
 
-const EnterLocation = ({ addLocation }: { addLocation: (location: string) => void }) => {
+const EnterLocation = ({
+  addLocation
+}: {
+  addLocation: (location: string) => void;
+}) => {
   const [zipCode, setZipCode] = useState("");
 
   const addZipCode = async () => {
@@ -14,26 +25,31 @@ const EnterLocation = ({ addLocation }: { addLocation: (location: string) => voi
   };
 
   return (
-    <WindowContent>
-      <Fieldset label="Add a location">
-        Enter a zipcode:
-        <div>
-          <div style={{ display: "flex" }}>
-            <TextField
-              value={zipCode}
-              placeholder="Type here..."
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                setZipCode(event.target.value)
-              }
-              fullWidth
-            />
-            <Button onClick={addZipCode} style={{ marginLeft: 4 }}>
-              Add
-            </Button>
+    <Window style={{display: "block"}}>
+      <WindowHeader className="window-header">
+        <span>Weather</span>
+      </WindowHeader>
+      <WindowContent>
+        <Fieldset label="Add a location">
+          <span>Enter a zipcode:</span>
+          <div>
+            <div style={{ display: "flex" }}>
+              <TextField
+                value={zipCode}
+                placeholder="Type here..."
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                  setZipCode(event.target.value)
+                }
+                fullWidth
+              />
+              <Button onClick={addZipCode} style={{ marginLeft: 4 }}>
+                Add
+              </Button>
+            </div>
           </div>
-        </div>
-      </Fieldset>
-    </WindowContent>
+        </Fieldset>
+      </WindowContent>
+    </Window>
   );
 };
 

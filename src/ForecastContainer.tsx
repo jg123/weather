@@ -1,7 +1,5 @@
 import axios from "axios";
 import { useState } from "react";
-// @ts-ignore
-import { Window } from "react95";
 import EnterLocation from "./EnterLocation";
 import Forecasts, { Forecast } from "./Forecasts";
 
@@ -20,11 +18,15 @@ const ForecastContainer = () => {
     setForecasts([...forecasts, data]);
   };
 
+  const removeForecast = (name: string, dt: number) => {
+    setForecasts(forecasts.filter((forecast) => forecast.name !== name && forecast.dt !== dt));
+  }
+
   return (
-    <Window>
+    <>
       <EnterLocation addLocation={addForecast} />
-      <Forecasts forecasts={forecasts} />
-    </Window>
+      <Forecasts forecasts={forecasts} removeForecast={removeForecast} />
+    </>
   );
 };
 
