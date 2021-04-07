@@ -11,7 +11,7 @@ const ForecastContainer = () => {
   const addForecast = useCallback(
     async (location: string) => {
       const { data } = await axios.get(
-        `http://api.openweathermap.org/data/2.5/weather?zip=${location}&appid=ea4304b1c266b2705e860ad3f9db7c89&units=imperial`
+        `https://api.openweathermap.org/data/2.5/weather?zip=${location}&appid=ea4304b1c266b2705e860ad3f9db7c89&units=imperial`
       );
       setForecasts([...forecasts, data]);
     },
