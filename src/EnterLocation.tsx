@@ -6,6 +6,9 @@ const EnterLocation = ({ addLocation }: { addLocation: (location: string) => voi
   const [zipCode, setZipCode] = useState("");
 
   const addZipCode = async () => {
+    if (zipCode.length < 1) {
+      return;
+    }
     window.localStorage.setItem("zipcode", zipCode);
     addLocation(zipCode);
   };
