@@ -15,7 +15,7 @@ const ForecastContainer = () => {
     ) {
       return;
     }
-    setForecasts([...forecasts, data]);
+    setForecasts([...forecasts, { ...data, zipCode: location }]);
   };
 
   const removeForecast = (name: string, dt: number) => {

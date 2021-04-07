@@ -43,9 +43,9 @@ const Wrapper = styled.div`
     }
   }
   .window {
-    display: block;
     min-height: 200px;
-    margin-top: 1rem;
+    min-width:400px;
+    margin: 1rem 1rem 0 0;
   }
 `;
 
@@ -59,6 +59,7 @@ export type Forecast = {
     temp_max: number;
   };
   weather: [{ description: string; icon: string }];
+  zipCode: string;
 };
 
 const Forecasts = ({ forecasts, removeForecast }: { forecasts: Forecast[], removeForecast: (name: string, dt: number) => void }) => {
@@ -67,13 +68,14 @@ const Forecasts = ({ forecasts, removeForecast }: { forecasts: Forecast[], remov
       {forecasts.map(
         ({
           name,
+          zipCode,
           dt,
           main: { temp, feels_like, temp_min, temp_max },
           weather: [{ description, icon }]
         }: Forecast) => (
           <Window className="window" key={name + dt}>
             <WindowHeader className="window-header">
-              <span>{name}</span>
+              <span>{name} ({zipCode}) at {new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(new Date(dt * 1000))}</span>
               <Button onClick={() => removeForecast(name, dt)}>
                 <span className="close-icon" />
               </Button>
