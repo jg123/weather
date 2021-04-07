@@ -2,6 +2,7 @@
   "name": "weather",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://jg123.github.io/weather",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -12,6 +13,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/styled-components": "^5.1.9",
     "axios": "^0.21.1",
+    "gh-pages": "^3.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
