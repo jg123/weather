@@ -8,7 +8,7 @@ const ForecastContainer = () => {
 
   const addForecast = async (location: string) => {
     const { data } = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?zip=${location}&appid=***REMOVED***&units=imperial`
+      `https://api.openweathermap.org/data/2.5/weather?zip=${location}&appid=${process.env.REACT_APP_APP_ID}&units=imperial`
     );
     if (
       forecasts.find(({ name, dt }) => data.name === name && data.dt === dt)
