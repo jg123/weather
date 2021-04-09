@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import {
   Window,
   WindowContent,
@@ -16,7 +16,8 @@ const EnterLocation = ({
 }) => {
   const [zipCode, setZipCode] = useState("");
 
-  const addZipCode = async () => {
+  const addZipCode = async (event: FormEvent) => {
+    event.preventDefault();
     if (zipCode.length < 1) {
       return;
     }
@@ -25,28 +26,31 @@ const EnterLocation = ({
   };
 
   return (
-    <Window style={{ "minWidth": "400px" }}>
+    <Window style={{ minWidth: "400px" }}>
       <WindowHeader className="window-header">
         <span>Weather</span>
       </WindowHeader>
       <WindowContent>
         <Fieldset label="Add a location">
-          <span>Enter a zipcode:</span>
-          <div>
-            <div style={{ display: "flex" }}>
-              <TextField
-                value={zipCode}
-                placeholder="Type here..."
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                  setZipCode(event.target.value)
-                }
-                fullWidth
-              />
-              <Button onClick={addZipCode} style={{ marginLeft: 4 }}>
-                Add
-              </Button>
+          <form onSubmit={addZipCode}>
+            <label htmlFor="enter-location">Enter a zipcode:</label>
+            <div>
+              <div style={{ display: "flex" }}>
+                <TextField
+                  id="enter-location"
+                  value={zipCode}
+                  placeholder="Type here..."
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    setZipCode(event.target.value)
+                  }
+                  fullWidth
+                />
+                <Button type="submit" style={{ marginLeft: 4 }}>
+                  Add
+                </Button>
+              </div>
             </div>
-          </div>
+          </form>
         </Fieldset>
       </WindowContent>
     </Window>
